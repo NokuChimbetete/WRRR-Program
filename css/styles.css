@@ -250,14 +250,30 @@ html {
 }
 
 .poke-hint {
-  width: 3rem;
-  height: 3rem;
+  width: 12rem;
+  height: 12rem;
   animation: poke-pulse 2s ease-in-out infinite;
 }
 
 @keyframes poke-pulse {
   0%, 100% { opacity: 0.6; transform: scale(1); }
   50%      { opacity: 1; transform: scale(1.15); }
+}
+
+
+/* ----- Side Footprint (beside right-aligned portraits) ----- */
+
+.portrait-with-side-footprint {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.side-footprint {
+  width: 4rem;
+  opacity: 1;
+  pointer-events: none;
+  transform: rotate(-20deg);
 }
 
 
@@ -285,18 +301,9 @@ html {
   transform: rotate(-15deg);
 }
 
-/* Trail footprints toward the right-aligned entry */
-.footprint-connector--right {
-  justify-content: flex-end;
-  padding-right: 4rem;
-}
-
 @media (min-width: 768px) {
   .footprint-connector img {
     width: 6.5rem;
-  }
-  .footprint-connector--right {
-    padding-right: 8rem;
   }
 }
 
