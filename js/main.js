@@ -67,12 +67,16 @@
 
 
   /* ========================================================
-     Carousel Builder
+     Carousel Builder — Infinite Loop
      ========================================================
      Groups photos into cards of 3:
        - 2 small images stacked on one side
        - 1 large image on the other side
      Alternates which side is large/small for variety.
+
+     Infinite scroll: when the user reaches the end, the
+     scroll position silently resets to the start (and vice
+     versa). Only the original cards live in the DOM.
      ======================================================== */
 
   function buildCarousel() {
@@ -128,6 +132,27 @@
     }
 
     carouselEl.innerHTML = html;
+
+    /* Infinite loop: seamlessly wrap when reaching either end */
+    let scrollTimer = null;
+    carouselEl.addEventListener('scroll', function () {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(function () {
+        const maxScroll = carouselEl.scrollWidth - carouselEl.clientWidth;
+
+        if (carouselEl.scrollLeft >= maxScroll - 2) {
+          /* Hit the end → jump to start */
+          carouselEl.style.scrollBehavior = 'auto';
+          carouselEl.scrollLeft = 0;
+          carouselEl.style.scrollBehavior = '';
+        } else if (carouselEl.scrollLeft <= 2) {
+          /* Hit the start → jump to end */
+          carouselEl.style.scrollBehavior = 'auto';
+          carouselEl.scrollLeft = maxScroll;
+          carouselEl.style.scrollBehavior = '';
+        }
+      }, 100);
+    });
   }
 
   buildCarousel();
