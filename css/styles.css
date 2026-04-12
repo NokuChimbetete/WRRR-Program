@@ -241,6 +241,26 @@ html {
 }
 
 
+/* ----- Portrait Row (portrait + poke hint side by side) ----- */
+
+.portrait-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.poke-hint {
+  width: 3rem;
+  height: 3rem;
+  animation: poke-pulse 2s ease-in-out infinite;
+}
+
+@keyframes poke-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%      { opacity: 1; transform: scale(1.15); }
+}
+
+
 /* ----- Footprint Path ----- */
 
 .footprint-connector {
@@ -265,9 +285,18 @@ html {
   transform: rotate(-15deg);
 }
 
+/* Trail footprints toward the right-aligned entry */
+.footprint-connector--right {
+  justify-content: flex-end;
+  padding-right: 4rem;
+}
+
 @media (min-width: 768px) {
   .footprint-connector img {
     width: 6.5rem;
+  }
+  .footprint-connector--right {
+    padding-right: 8rem;
   }
 }
 
@@ -318,6 +347,7 @@ html {
   gap: 1rem;
   overflow-x: auto;
   padding: 0 1rem 1rem;
+  scroll-snap-type: x mandatory;
 }
 
 /* Hide scrollbar */
@@ -331,6 +361,7 @@ html {
   flex-shrink: 0;
   width: 85vw;
   max-width: 28rem;
+  scroll-snap-align: start;
 }
 
 .carousel-card img {

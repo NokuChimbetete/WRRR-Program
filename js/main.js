@@ -128,27 +128,6 @@
     }
 
     carouselEl.innerHTML = html;
-
-    /* Infinite loop: seamlessly wrap when reaching either end */
-    let scrollTimer = null;
-    carouselEl.addEventListener('scroll', function () {
-      clearTimeout(scrollTimer);
-      scrollTimer = setTimeout(function () {
-        const maxScroll = carouselEl.scrollWidth - carouselEl.clientWidth;
-
-        if (carouselEl.scrollLeft >= maxScroll - 2) {
-          /* Hit the end → jump to start */
-          carouselEl.style.scrollBehavior = 'auto';
-          carouselEl.scrollLeft = 0;
-          carouselEl.style.scrollBehavior = '';
-        } else if (carouselEl.scrollLeft <= 2) {
-          /* Hit the start → jump to end */
-          carouselEl.style.scrollBehavior = 'auto';
-          carouselEl.scrollLeft = maxScroll;
-          carouselEl.style.scrollBehavior = '';
-        }
-      }, 100);
-    });
   }
 
   buildCarousel();
