@@ -74,11 +74,22 @@ html {
   transform: rotate(15deg);
 }
 
+.scroll-arrow {
+  width: 5rem;
+  animation: bounce-down 2s ease-in-out infinite;
+}
+
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(0.5rem); }
+}
+
 @media (min-width: 640px) {
   .cover { padding: 1rem 1rem 2rem; }
   .poster-wrapper { max-width: 36rem; margin: 0 auto; }
   .poster-wrapper img { border-radius: 0.5rem; }
   .rabbit { width: 6.5rem; }
+  .scroll-arrow { width: 6.5rem; }
   .rabbits { gap: 5rem; }
 }
 
@@ -307,7 +318,6 @@ html {
   gap: 1rem;
   overflow-x: auto;
   padding: 0 1rem 1rem;
-  scroll-snap-type: x mandatory;
 }
 
 /* Hide scrollbar */
@@ -321,7 +331,6 @@ html {
   flex-shrink: 0;
   width: 85vw;
   max-width: 28rem;
-  scroll-snap-align: start;
 }
 
 .carousel-card img {
