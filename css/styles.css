@@ -39,20 +39,17 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 1rem 3rem;
+  padding: 0 0 2rem;
 }
 
 .poster-wrapper {
   width: 100%;
-  max-width: 22rem;
-  margin: 0 auto;
 }
 
 .poster-wrapper img {
   width: 100%;
   height: auto;
-  border-radius: 0.5rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  display: block;
 }
 
 .rabbits {
@@ -78,7 +75,9 @@ html {
 }
 
 @media (min-width: 640px) {
-  .poster-wrapper { max-width: 26rem; }
+  .cover { padding: 1rem 1rem 2rem; }
+  .poster-wrapper { max-width: 36rem; margin: 0 auto; }
+  .poster-wrapper img { border-radius: 0.5rem; }
   .rabbit { width: 6.5rem; }
   .rabbits { gap: 5rem; }
 }
@@ -237,8 +236,8 @@ html {
 }
 
 .footprint-connector img {
-  width: 4rem;
-  opacity: 0.18;
+  width: 5rem;
+  opacity: 1;
 }
 
 /* Alternate rotation for visual path feel */
@@ -252,8 +251,7 @@ html {
 
 @media (min-width: 768px) {
   .footprint-connector img {
-    width: 5.5rem;
-    opacity: 0.2;
+    width: 6.5rem;
   }
 }
 
@@ -399,7 +397,7 @@ html {
   margin: 8vh auto 0;
   max-height: 82vh;
   overflow-y: auto;
-  background: #1a1a1a;
+  background: #000;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 0.5rem;
   padding: 1.5rem;
