@@ -86,18 +86,25 @@
       const b = CAROUSEL_PHOTOS[i + 1];
       const c = CAROUSEL_PHOTOS[i + 2];
 
+      const groupIndex = Math.floor(i / 3);
+      /* Eager-load the first TWO cards (≈6 images) and mark them high-priority
+         so the first swipe never hits blank/loading images. Everything after
+         stays lazy so we don't burn bandwidth on users who never swipe. */
+      const attrs = groupIndex < 2
+        ? ' loading="eager" fetchpriority="high" decoding="async"'
+        : ' loading="lazy" decoding="async"';
+
       /* If fewer than 3 remain, show a single large image */
       if (!b || !c) {
         html +=
           '<div class="carousel-card">' +
             '<div class="col-large">' +
-              '<img src="' + basePath + a + '" alt="" loading="lazy">' +
+              '<img src="' + basePath + a + '" alt=""' + attrs + '>' +
             '</div>' +
           '</div>';
         continue;
       }
 
-      const groupIndex = Math.floor(i / 3);
       const flipped = groupIndex % 2 === 1;
 
       if (flipped) {
@@ -105,11 +112,11 @@
         html +=
           '<div class="carousel-card">' +
             '<div class="col-large">' +
-              '<img src="' + basePath + a + '" alt="" loading="lazy">' +
+              '<img src="' + basePath + a + '" alt=""' + attrs + '>' +
             '</div>' +
             '<div class="col-small">' +
-              '<img src="' + basePath + b + '" alt="" loading="lazy">' +
-              '<img src="' + basePath + c + '" alt="" loading="lazy">' +
+              '<img src="' + basePath + b + '" alt=""' + attrs + '>' +
+              '<img src="' + basePath + c + '" alt=""' + attrs + '>' +
             '</div>' +
           '</div>';
       } else {
@@ -117,11 +124,11 @@
         html +=
           '<div class="carousel-card">' +
             '<div class="col-small">' +
-              '<img src="' + basePath + a + '" alt="" loading="lazy">' +
-              '<img src="' + basePath + b + '" alt="" loading="lazy">' +
+              '<img src="' + basePath + a + '" alt=""' + attrs + '>' +
+              '<img src="' + basePath + b + '" alt=""' + attrs + '>' +
             '</div>' +
             '<div class="col-large">' +
-              '<img src="' + basePath + c + '" alt="" loading="lazy">' +
+              '<img src="' + basePath + c + '" alt=""' + attrs + '>' +
             '</div>' +
           '</div>';
       }
