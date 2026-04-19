@@ -3,7 +3,6 @@
 
    - Names verified against credits.txt
    - "portraits" array: 3 images for cast, 2 for everyone else
-   - Replace bio1/bio2 lorem ipsum with real text later
    ============================================================ */
 
 const TEAM = {
@@ -25,7 +24,7 @@ const TEAM = {
     name: 'Caitlin Neall-Johnston',
     role: 'DIRECTOR, ASSISTANT PRODUCER',
     portraits: ['Caitlin1.webp', 'Caitlin2.webp'],
-    bio1: 'Despite growing up across seven countries (+ two extra Minerva ones), Caitlin has yet to lay eyes on a red rabbit in person.',
+    bio1: 'When not on stage or in the rehearsal room, you can find Caitlin climbing trees, examining rocks, or coworking on assigments for university. ',
     bio2: 'Caitlin has experience acting in theatre productions at a high-school and university level, and has recently found so much joy in leading rehearsals and organising productions as director for HOWL theatre group.',
   },
   Almira: {
